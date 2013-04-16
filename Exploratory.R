@@ -10,13 +10,12 @@ tiger.stats
 
 http://espn.go.com/golf/player/results/_/id/462/tiger-woods
 
-con <- url("http://espn.go.com/golf/player/results/_/id/462/tiger-woods") 
-tiger.stats <- readLines(con)
-close(con)
-head(tiger.stats)
-class(tiger.stats)
-length(tiger.stats)
-strsplit(tiger.stats, "RECENT 2013 PGA TOURNAMENTS")
+
+theurl <- "http://espn.go.com/golf/player/results/_/id/462/tiger-woods"
+tables <- readHTMLTable(theurl)
+theurl <- "http://en.wikipedia.org/wiki/Brazil_national_football_team"
+tables <- readHTMLTable(theurl)
+
 
 getwd()
 setwd("/Users/upjohnc/Golf Statistics/")
@@ -39,24 +38,14 @@ tigerdata$money <- as.numeric(gsub("^\\$", "", as.character(tigerdata$money)))
  tigerdata$money[is.na(temp)] <- 0
 tigerdata$money[1] > tigerdata$money[65]
 tigerdata$money[65]
-
-library(RCurl)
-library(XML)
-
-theurl <- "http://en.wikipedia.org/wiki/Brazil_national_football_team"
-webpage <- getURL(theurl)
-webpage <- readLines(tc <- textConnection(webpage)); close(tc)
-
-pagetree <- htmlTreeParse(webpage, error=function(...){}, useInternalNodes = TRUE)
-
-# Extract table header and contents
-tablehead <- xpathSApply(pagetree, "//*/table[@class='wikitable sortable']/tr/th", xmlValue)
-results <- xpathSApply(pagetree, "//*/table[@class='wikitable sortable']/tr/td", xmlValue)
-
-# Convert character vector to dataframe
-content <- as.data.frame(matrix(results, ncol = 8, byrow = TRUE))
-
-# Clean up the results
-content[,1] <- gsub("Â ", "", content[,1])
-tablehead <- gsub("Â ", "", tablehead)
-names(content) <- tablehead
+as.character(tigerdata$date, "%Y") > 2012
+hist(tigerdata$money[as.character(tigerdata$date, "%Y") == 2013], breaks=10)
+plot(tigerdata$money)
+summary(tigerdata$date)
+tigerplot2013 <- tigerdata$money[as.character(tigerdata$date, "%Y") == 2013]
+tigerplot2012 <- tigerdata$money[as.character(tigerdata$date, "%Y") == 2012]
+tigerplot2011 <- tigerdata$money[as.character(tigerdata$date, "%Y") == 2011]
+tigerplot2010 <- tigerdata$money[as.character(tigerdata$date, "%Y") == 2010]
+tigerplot2009 <- tigerdata$money[as.character(tigerdata$date, "%Y") == 2009]
+boxplot(tigerplot2013, tigerplot2012, tigerplot2011, tigerplot2010, tigerplot2009)
+summary(tigerdata$money)
