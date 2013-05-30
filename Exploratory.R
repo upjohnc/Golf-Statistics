@@ -42,10 +42,23 @@ as.character(tigerdata$date, "%Y") > 2012
 hist(tigerdata$money[as.character(tigerdata$date, "%Y") == 2013], breaks=10)
 plot(tigerdata$money)
 summary(tigerdata$date)
+i<- 2013
+eval(parse(text=paste0("tigerdata$money[as.character(tigerdata$date, "\\%Y") == ", i)))
+paste0("tigerdata$money[as.character(tigerdata$date, %Y) == ", i)
+
+eval(parse(text=paste0("tigerdata$money[as.character(tigerdata$date, \\"%Y\\") == " i)))
+for(i in 2009:2013){
+  eval(parse(text=paste0("tigerdata$money[as.character(tigerdata$date, \\"%Y\\") == " i)))
+  assign(paste0("tigerplot", i), tigerdata$money)
+}
+
 tigerplot2013 <- tigerdata$money[as.character(tigerdata$date, "%Y") == 2013]
 tigerplot2012 <- tigerdata$money[as.character(tigerdata$date, "%Y") == 2012]
 tigerplot2011 <- tigerdata$money[as.character(tigerdata$date, "%Y") == 2011]
 tigerplot2010 <- tigerdata$money[as.character(tigerdata$date, "%Y") == 2010]
 tigerplot2009 <- tigerdata$money[as.character(tigerdata$date, "%Y") == 2009]
 boxplot(tigerplot2013, tigerplot2012, tigerplot2011, tigerplot2010, tigerplot2009)
-summary(tigerdata$money)
+for(i in 2009:2013){
+  hist(eval(parse(text=paste0("tigerplot", i))), breaks=10)
+}
+?xtabs
