@@ -105,6 +105,7 @@ for (i in grep("\\$", temp4)) temp4[,i]<-gsub("\\$", "", temp4[,i])
 for (i in grep(",", temp4)) temp4[,i]<-gsub(",", "", temp4[,i])
 for (i in 2:11) temp4[,i] <- as.numeric(temp4[,i])
 duval<-temp4
+
 ####Fowler####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 22]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 23]
@@ -151,17 +152,18 @@ clark<-temp4
 ####Ohair####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 31]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 32]
-temp3<- all[c(1,2,9,14,19,24,34,39,110, 53, 67), 33]
-temp <- rbind(temp1, temp2, temp3)
-temp4<-rbind(header, temp)
-temp4<-as.data.frame(temp, stringsAsFactors=F)
-colnames(temp4) <- header
+temp3<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 33]
+temp4<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 34]
+temp <- rbind(temp1, temp2, temp3, temp4)
+temp5<-rbind(header, temp)
+temp5<-as.data.frame(temp, stringsAsFactors=F)
+colnames(temp5) <- header
 #remove $ , % from data
-for (i in grep("%", temp4)) temp4[,i]<-gsub("%", "", temp4[,i])
-for (i in grep("\\$", temp4)) temp4[,i]<-gsub("\\$", "", temp4[,i])
-for (i in grep(",", temp4)) temp4[,i]<-gsub(",", "", temp4[,i])
-for (i in 2:11) temp4[,i] <- as.numeric(temp4[,i])
-ohair<-temp4
+for (i in grep("%", temp5)) temp5[,i]<-gsub("%", "", temp5[,i])
+for (i in grep("\\$", temp5)) temp5[,i]<-gsub("\\$", "", temp5[,i])
+for (i in grep(",", temp5)) temp5[,i]<-gsub(",", "", temp5[,i])
+for (i in 2:11) temp5[,i] <- as.numeric(temp5[,i])
+ohair<-temp5
 ohair
 tiger
 clark
