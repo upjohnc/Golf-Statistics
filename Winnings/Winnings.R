@@ -23,6 +23,12 @@ summary(ohair)
 ohair
 ohairTot <- c(268614, 1160981, 1483948, 1859040)
 
-ohair[,4]/ohairTot[4]
-ohair[,2]/ohairTot[2]
+o12<-ohair[,2]/ohairTot[2]
+o12<-o12[order(o12)]
+sum(o12[25:27])
+o12
+o11<-ohair[,3]/ohairTot[3]
+o11<-o11[order(o11)]
+sum(o11[24:26])
+o11
 t(ohair)/ohairTot
