@@ -21,9 +21,7 @@ colnames(ohair)<- c("2013", "2012", "2011", "2010")
 ohair
 boxplot(ohair)
 summary(ohair)
-apply(ohair, 2,function(x) sum(x, na.rm=T))
-ohairTot <- c(268614, 1160981, 1483948, 1859040)
-ohair[,2]/1160981
+ohairTot <- apply(ohair, 2,function(x) sum(x, na.rm=T))
 o12<- ohair[,2]/ohairTot[2]
 o12<-o12[order(o12, decreasing = T)]
 sum(o12[1:3])
