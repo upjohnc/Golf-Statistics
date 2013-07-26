@@ -1,4 +1,3 @@
-getwd()
 setwd('./Golf Statistics')
 all<-read.csv('./data/Winning Stats.csv', header=FALSE, stringsAsFactors=F)
 
