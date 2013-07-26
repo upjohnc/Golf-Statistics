@@ -1,8 +1,9 @@
 setwd('./Golf Statistics')
 all<-read.csv('./data/Winning Stats.csv', header=FALSE, stringsAsFactors=F)
 
-summaryStat <- ""
-summaryStat <- colnames(c("Name", "2013 - 3", "2013 - 6", "2012 - 3", "2012 - 6", "2011 - 3", "2011 - 6"))
+summaryStat <- data.frame(Name=character(),
+                          Three2013=as.numeric(character()), Six2013=as.numeric(character()), Three2012=as.numeric(character()), Six2012=as.numeric(character()), Three2011=as.numeric(character()), Six2011=as.numeric(character()), 
+                          stringsAsFactors=FALSE)
 
 ####Tiger####
 temp1<- all[c(27, 38, 49, 60, 71, 82, 93, 104, 115, 126, 137, 148, 159, 170, 181, 192, 203, 214, 225, 236, 247, 258, 269, 280, 291, 302, 313, 324), 1]
@@ -28,7 +29,7 @@ tiger12<- tiger[,2]/tigerTot[2]
 tiger12<-tiger12[order(tiger12, decreasing = T)]
 tiger11<-tiger[,3]/tigerTot[3]
 tiger11<-tiger11[order(tiger11, decreasing = T)]
-rbind(summaryStat, c("Tiger", sum(tiger13[1:3]), sum(tiger13[1:6]), sum(tiger12[1:3]), sum(tiger12[1:6]), sum(tiger11[1:3]), sum(tiger11[1:6])))
+summaryStat[1,] <- c("Tiger", sum(tiger13[1:3]), sum(tiger13[1:6]), sum(tiger12[1:3]), sum(tiger12[1:6]), sum(tiger11[1:3]), sum(tiger11[1:6]))
 
 ####Crane####
 temp1<- all[c(27, 38, 49, 60, 71, 82, 93, 104, 115, 126, 137, 148, 159, 170, 181, 192, 203, 214, 225, 236, 247, 258, 269, 280, 291, 302, 313, 324), 4]
@@ -50,16 +51,11 @@ summary(crane)
 craneTot <- apply(crane, 2,function(x) sum(x, na.rm=T))
 crane13<- crane[,1]/craneTot[1]
 crane13<-crane13[order(crane13, decreasing = T)]
-sum(crane13[1:3])
-sum(crane13[1:6])
 crane12<- crane[,2]/craneTot[2]
 crane12<-crane12[order(crane12, decreasing = T)]
-sum(crane12[1:3])
-sum(crane12[1:6])
 crane11<-crane[,3]/craneTot[3]
 crane11<-crane11[order(crane11, decreasing = T)]
-sum(crane11[1:3])
-sum(crane11[1:6])
+summaryStat[2,] <- c("crane", sum(crane13[1:3]), sum(crane13[1:6]), sum(crane12[1:3]), sum(crane12[1:6]), sum(crane11[1:3]), sum(crane11[1:6]))
 
 ####Baddeley####
 temp1<- all[c(27, 38, 49, 60, 71, 82, 93, 104, 115, 126, 137, 148, 159, 170, 181, 192, 203, 214, 225, 236, 247, 258, 269, 280, 291, 302, 313, 324), 7]
@@ -81,16 +77,12 @@ summary(bad)
 badTot <- apply(bad, 2,function(x) sum(x, na.rm=T))
 bad13<- bad[,1]/badTot[1]
 bad13<-bad13[order(bad13, decreasing = T)]
-sum(bad13[1:3])
-sum(bad13[1:6])
 bad12<- bad[,2]/badTot[2]
 bad12<-bad12[order(bad12, decreasing = T)]
-sum(bad12[1:3])
-sum(bad12[1:6])
 bad11<-bad[,3]/badTot[3]
 bad11<-bad11[order(bad11, decreasing = T)]
-sum(bad11[1:3])
-sum(bad11[1:6])
+summaryStat[3,] <- c("bad", sum(bad13[1:3]), sum(bad13[1:6]), sum(bad12[1:3]), sum(bad12[1:6]), sum(bad11[1:3]), sum(bad11[1:6]))
+
 
 ####Watson####
 temp1<- all[c(27, 38, 49, 60, 71, 82, 93, 104, 115, 126, 137, 148, 159, 170, 181, 192, 203, 214, 225, 236, 247, 258, 269, 280, 291, 302, 313, 324), 10]
@@ -112,16 +104,12 @@ summary(watson)
 watsonTot <- apply(watson, 2,function(x) sum(x, na.rm=T))
 watson13<- watson[,1]/watsonTot[1]
 watson13<-watson13[order(watson13, decreasing = T)]
-sum(watson13[1:3])
-sum(watson13[1:6])
 watson12<- watson[,2]/watsonTot[2]
 watson12<-watson12[order(watson12, decreasing = T)]
-sum(watson12[1:3])
-sum(watson12[1:6])
 watson11<-watson[,3]/watsonTot[3]
 watson11<-watson11[order(watson11, decreasing = T)]
-sum(watson11[1:3])
-sum(watson11[1:6])
+summaryStat[4,] <- c("watson", sum(watson13[1:3]), sum(watson13[1:6]), sum(watson12[1:3]), sum(watson12[1:6]), sum(watson11[1:3]), sum(watson11[1:6]))
+
 
 ####Kuchar####
 temp1<- all[c(27, 38, 49, 60, 71, 82, 93, 104, 115, 126, 137, 148, 159, 170, 181, 192, 203, 214, 225, 236, 247, 258, 269, 280, 291, 302, 313, 324), 13]
@@ -143,16 +131,11 @@ summary(kuchar)
 kucharTot <- apply(kuchar, 2,function(x) sum(x, na.rm=T))
 kuchar13<- kuchar[,1]/kucharTot[1]
 kuchar13<-kuchar13[order(kuchar13, decreasing = T)]
-sum(kuchar13[1:3])
-sum(kuchar13[1:6])
 kuchar12<- kuchar[,2]/kucharTot[2]
 kuchar12<-kuchar12[order(kuchar12, decreasing = T)]
-sum(kuchar12[1:3])
-sum(kuchar12[1:6])
 kuchar11<-kuchar[,3]/kucharTot[3]
 kuchar11<-kuchar11[order(kuchar11, decreasing = T)]
-sum(kuchar11[1:3])
-sum(kuchar11[1:6])
+summaryStat[5,] <- c("kuchar", sum(kuchar13[1:3]), sum(kuchar13[1:6]), sum(kuchar12[1:3]), sum(kuchar12[1:6]), sum(kuchar11[1:3]), sum(kuchar11[1:6]))
 
 ####Bradely####
 temp1<- all[c(27, 38, 49, 60, 71, 82, 93, 104, 115, 126, 137, 148, 159, 170, 181, 192, 203, 214, 225, 236, 247, 258, 269, 280, 291, 302, 313, 324), 16]
@@ -174,16 +157,11 @@ summary(brad)
 bradTot <- apply(brad, 2,function(x) sum(x, na.rm=T))
 brad13<- brad[,1]/bradTot[1]
 brad13<-brad13[order(brad13, decreasing = T)]
-sum(brad13[1:3])
-sum(brad13[1:6])
 brad12<- brad[,2]/bradTot[2]
 brad12<-brad12[order(brad12, decreasing = T)]
-sum(brad12[1:3])
-sum(brad12[1:6])
 brad11<-brad[,3]/bradTot[3]
 brad11<-brad11[order(brad11, decreasing = T)]
-sum(brad11[1:3])
-sum(brad11[1:6])
+summaryStat[6,] <- c("brad", sum(brad13[1:3]), sum(brad13[1:6]), sum(brad12[1:3]), sum(brad12[1:6]), sum(brad11[1:3]), sum(brad11[1:6]))
 
 ####Duval####
 temp1<- all[c(27, 38, 49, 60, 71, 82, 93, 104, 115, 126, 137, 148, 159, 170, 181, 192, 203, 214, 225, 236, 247, 258, 269, 280, 291, 302, 313, 324), 19]
@@ -205,16 +183,11 @@ summary(duv)
 duvTot <- apply(duv, 2,function(x) sum(x, na.rm=T))
 duv13<- duv[,1]/duvTot[1]
 duv13<-duv13[order(duv13, decreasing = T)]
-sum(duv13[1:3])
-sum(duv13[1:6])
 duv12<- duv[,2]/duvTot[2]
 duv12<-duv12[order(duv12, decreasing = T)]
-sum(duv12[1:3])
-sum(duv12[1:6])
 duv11<-duv[,3]/duvTot[3]
 duv11<-duv11[order(duv11, decreasing = T)]
-sum(duv11[1:3])
-sum(duv11[1:6])
+summaryStat[7,] <- c("duv", sum(duv13[1:3]), sum(duv13[1:6]), sum(duv12[1:3]), sum(duv12[1:6]), sum(duv11[1:3]), sum(duv11[1:6]))
 
 ####Fowler####
 temp1<- all[c(27, 38, 49, 60, 71, 82, 93, 104, 115, 126, 137, 148, 159, 170, 181, 192, 203, 214, 225, 236, 247, 258, 269, 280, 291, 302, 313, 324), 22]
@@ -236,16 +209,11 @@ summary(fowler)
 fowlerTot <- apply(fowler, 2,function(x) sum(x, na.rm=T))
 fowler13<- fowler[,1]/fowlerTot[1]
 fowler13<-fowler13[order(fowler13, decreasing = T)]
-sum(fowler13[1:3])
-sum(fowler13[1:6])
 fowler12<- fowler[,2]/fowlerTot[2]
 fowler12<-fowler12[order(fowler12, decreasing = T)]
-sum(fowler12[1:3])
-sum(fowler12[1:6])
 fowler11<-fowler[,3]/fowlerTot[3]
 fowler11<-fowler11[order(fowler11, decreasing = T)]
-sum(fowler11[1:3])
-sum(fowler11[1:6])
+summaryStat[8,] <- c("fowler", sum(fowler13[1:3]), sum(fowler13[1:6]), sum(fowler12[1:3]), sum(fowler12[1:6]), sum(fowler11[1:3]), sum(fowler11[1:6]))
 
 ####Furyk####
 temp1<- all[c(27, 38, 49, 60, 71, 82, 93, 104, 115, 126, 137, 148, 159, 170, 181, 192, 203, 214, 225, 236, 247, 258, 269, 280, 291, 302, 313, 324), 25]
@@ -267,16 +235,11 @@ summary(furyk)
 furykTot <- apply(furyk, 2,function(x) sum(x, na.rm=T))
 furyk13<- furyk[,1]/furykTot[1]
 furyk13<-furyk13[order(furyk13, decreasing = T)]
-sum(furyk13[1:3])
-sum(furyk13[1:6])
 furyk12<- furyk[,2]/furykTot[2]
 furyk12<-furyk12[order(furyk12, decreasing = T)]
-sum(furyk12[1:3])
-sum(furyk12[1:6])
 furyk11<-furyk[,3]/furykTot[3]
 furyk11<-furyk11[order(furyk11, decreasing = T)]
-sum(furyk11[1:3])
-sum(furyk11[1:6])
+summaryStat[9,] <- c("furyk", sum(furyk13[1:3]), sum(furyk13[1:6]), sum(furyk12[1:3]), sum(furyk12[1:6]), sum(furyk11[1:3]), sum(furyk11[1:6]))
 
 ####Clark####
 temp1<- all[c(27, 38, 49, 60, 71, 82, 93, 104, 115, 126, 137, 148, 159, 170, 181, 192, 203, 214, 225, 236, 247, 258, 269, 280, 291, 302, 313, 324), 28]
@@ -298,16 +261,11 @@ summary(clark)
 clarkTot <- apply(clark, 2,function(x) sum(x, na.rm=T))
 clark13<- clark[,1]/clarkTot[1]
 clark13<-clark13[order(clark13, decreasing = T)]
-sum(clark13[1:3])
-sum(clark13[1:6])
 clark12<- clark[,2]/clarkTot[2]
 clark12<-clark12[order(clark12, decreasing = T)]
-sum(clark12[1:3])
-sum(clark12[1:6])
 clark11<-clark[,3]/clarkTot[3]
 clark11<-clark11[order(clark11, decreasing = T)]
-sum(clark11[1:3])
-sum(clark11[1:6])
+summaryStat[10,] <- c("clark", sum(clark13[1:3]), sum(clark13[1:6]), sum(clark12[1:3]), sum(clark12[1:6]), sum(clark11[1:3]), sum(clark11[1:6]))
 
 ####Ohair####
 temp1<- all[c(27, 38, 49, 60, 71, 82, 93, 104, 115, 126, 137, 148, 159, 170, 181, 192, 203, 214, 225, 236, 247, 258, 269, 280, 291, 302, 313, 324), 31]
@@ -330,19 +288,8 @@ summary(ohair)
 ohairTot <- apply(ohair, 2,function(x) sum(x, na.rm=T))
 ohair13<- ohair[,1]/ohairTot[1]
 ohair13<-ohair13[order(ohair13, decreasing = T)]
-sum(ohair13[1:3])
-sum(ohair13[1:6])
 ohair12<- ohair[,2]/ohairTot[2]
 ohair12<-ohair12[order(ohair12, decreasing = T)]
-sum(ohair12[1:3])
-sum(ohair12[1:6])
 ohair11<-ohair[,3]/ohairTot[3]
 ohair11<-ohair11[order(ohair11, decreasing = T)]
-sum(ohair11[1:3])
-sum(ohair11[1:6])
-ohair10<-ohair[,4]/ohairTot[4]
-ohair10<-ohair10[order(ohair10, decreasing = T)]
-sum(ohair10[1:3])
-sum(ohair10[1:6])
-
-watsonTot
+summaryStat[11,] <- c("ohair", sum(ohair13[1:3]), sum(ohair13[1:6]), sum(ohair12[1:3]), sum(ohair12[1:6]), sum(ohair11[1:3]), sum(ohair11[1:6]))
