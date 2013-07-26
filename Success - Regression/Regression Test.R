@@ -33,6 +33,7 @@ for (i in grep("\\$", temp4)) temp4[,i]<-gsub("\\$", "", temp4[,i])
 for (i in grep(",", temp4)) temp4[,i]<-gsub(",", "", temp4[,i])
 for (i in 2:11) temp4[,i] <- as.numeric(temp4[,i])
 crane<-temp4
+
 ####Baddeley####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 7]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 8]
@@ -47,6 +48,7 @@ for (i in grep("\\$", temp4)) temp4[,i]<-gsub("\\$", "", temp4[,i])
 for (i in grep(",", temp4)) temp4[,i]<-gsub(",", "", temp4[,i])
 for (i in 2:11) temp4[,i] <- as.numeric(temp4[,i])
 baddeley<-temp4
+
 ####Watson####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 10]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 11]
@@ -61,6 +63,7 @@ for (i in grep("\\$", temp4)) temp4[,i]<-gsub("\\$", "", temp4[,i])
 for (i in grep(",", temp4)) temp4[,i]<-gsub(",", "", temp4[,i])
 for (i in 2:11) temp4[,i] <- as.numeric(temp4[,i])
 watson<-temp4
+
 ####Kuchar####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 13]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 14]
@@ -75,6 +78,7 @@ for (i in grep("\\$", temp4)) temp4[,i]<-gsub("\\$", "", temp4[,i])
 for (i in grep(",", temp4)) temp4[,i]<-gsub(",", "", temp4[,i])
 for (i in 2:11) temp4[,i] <- as.numeric(temp4[,i])
 kuchar<-temp4
+
 ####Bradely####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 16]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 17]
@@ -89,6 +93,7 @@ for (i in grep("\\$", temp4)) temp4[,i]<-gsub("\\$", "", temp4[,i])
 for (i in grep(",", temp4)) temp4[,i]<-gsub(",", "", temp4[,i])
 for (i in 2:11) temp4[,i] <- as.numeric(temp4[,i])
 bradely<-temp4
+
 ####Duval####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 19]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 20]
@@ -120,6 +125,7 @@ for (i in grep("\\$", temp4)) temp4[,i]<-gsub("\\$", "", temp4[,i])
 for (i in grep(",", temp4)) temp4[,i]<-gsub(",", "", temp4[,i])
 for (i in 2:11) temp4[,i] <- as.numeric(temp4[,i])
 fowler<-temp4
+
 ####Furyk####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 25]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 26]
@@ -134,6 +140,7 @@ for (i in grep("\\$", temp4)) temp4[,i]<-gsub("\\$", "", temp4[,i])
 for (i in grep(",", temp4)) temp4[,i]<-gsub(",", "", temp4[,i])
 for (i in 2:11) temp4[,i] <- as.numeric(temp4[,i])
 furyk<-temp4
+
 ####Clark####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 28]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 29]
