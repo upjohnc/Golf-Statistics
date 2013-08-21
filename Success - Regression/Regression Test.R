@@ -178,3 +178,4 @@ allPlayers <- rbind(baddeley, bradely, clark, crane, duval, fowler, furyk, kucha
 colnames(allPlayers)
 
 lm(allPlayers[,11] ~ allPlayers[,3] + allPlayers[,4] + allPlayers[,5] + allPlayers[,6] + allPlayers[,7] + allPlayers[,8] + allPlayers[,9], data = allPlayers)
+lm(allPlayers[,11] ~ ., data = allPlayers)
