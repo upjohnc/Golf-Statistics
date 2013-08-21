@@ -22,7 +22,7 @@ tiger
 ####Crane####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 4]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 5]
-temp3<- all[c(1,2,9,14,19,24,34,39,106, 53, 63), 6]
+temp3<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 6]
 temp <- rbind(temp1, temp2, temp3)
 temp4<-rbind(header, temp)
 temp4<-as.data.frame(temp, stringsAsFactors=F)
@@ -37,7 +37,7 @@ crane<-temp4
 ####Baddeley####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 7]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 8]
-temp3<- all[c(1,2,9,14,19,24,34,39,106, 53, 63), 9]
+temp3<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 9]
 temp <- rbind(temp1, temp2, temp3)
 temp4<-rbind(header, temp)
 temp4<-as.data.frame(temp, stringsAsFactors=F)
@@ -52,7 +52,7 @@ baddeley<-temp4
 ####Watson####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 10]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 11]
-temp3<- all[c(1,2,9,14,19,24,34,39,106, 53, 63), 12]
+temp3<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 12]
 temp <- rbind(temp1, temp2, temp3)
 temp4<-rbind(header, temp)
 temp4<-as.data.frame(temp, stringsAsFactors=F)
@@ -67,7 +67,7 @@ watson<-temp4
 ####Kuchar####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 13]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 14]
-temp3<- all[c(1,2,9,14,19,24,34,39,106, 53, 63), 15]
+temp3<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 15]
 temp <- rbind(temp1, temp2, temp3)
 temp4<-rbind(header, temp)
 temp4<-as.data.frame(temp, stringsAsFactors=F)
@@ -82,7 +82,7 @@ kuchar<-temp4
 ####Bradely####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 16]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 17]
-temp3<- all[c(1,2,9,14,19,24,34,39,106, 53, 63), 18]
+temp3<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 18]
 temp <- rbind(temp1, temp2, temp3)
 temp4<-rbind(header, temp)
 temp4<-as.data.frame(temp, stringsAsFactors=F)
@@ -112,7 +112,7 @@ duval<-temp4
 ####Fowler####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 22]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 23]
-temp3<- all[c(1,2,9,14,19,24,34,39,106, 53, 63), 24]
+temp3<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 24]
 temp <- rbind(temp1, temp2, temp3)
 temp4<-rbind(header, temp)
 temp4<-as.data.frame(temp, stringsAsFactors=F)
@@ -127,7 +127,7 @@ fowler<-temp4
 ####Furyk####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 25]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 26]
-temp3<- all[c(1,2,9,14,19,24,34,39,106, 53, 63), 27]
+temp3<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 27]
 temp <- rbind(temp1, temp2, temp3)
 temp4<-rbind(header, temp)
 temp4<-as.data.frame(temp, stringsAsFactors=F)
@@ -171,8 +171,10 @@ for (i in 2:11) temp5[,i] <- as.numeric(temp5[,i])
 ohair<-temp5
 
 #remove temp files
-rm(temp, temp1, temp2, temp3, temp4, header,i)
+rm(temp, temp1, temp2, temp3, temp4, temp5, header,i)
 
-ohair
-tiger
-clark
+allPlayers <- rbind(baddeley, bradely, clark, crane, duval, fowler, furyk, kuchar, ohair, tiger, watson)
+
+colnames(allPlayers)
+
+lm(allPlayers[,11] ~ allPlayers[,3] + allPlayers[,4] + allPlayers[,5] + allPlayers[,6] + allPlayers[,7] + allPlayers[,8] + allPlayers[,9], data = allPlayers)
