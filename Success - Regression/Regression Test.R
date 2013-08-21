@@ -95,15 +95,13 @@ for (i in 2:11) temp4[,i] <- as.numeric(temp4[,i])
 bradely<-temp4
 
 ####Duval####
-temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 19]
-temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 20]
-temp3<- all[c(1,2,9,14,19,24,34,39,106, 53, 63), 21]
+temp1<- all[c(1,2,9,14,19,24,34,39, 101, 53, 58), 19]
+temp2<- all[c(1,2,9,14,19,24,34,39, 96, 48, 53), 20]
+temp3<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 21]
 temp <- rbind(temp1, temp2, temp3)
 temp4<-rbind(header, temp)
 temp4<-as.data.frame(temp, stringsAsFactors=F)
 colnames(temp4) <- header
-#Duval hasn't made a cut in 2013 so need to add some NA
-temp4[1,10:11] <- NA
 #remove $ , % from data
 for (i in grep("%", temp4)) temp4[,i]<-gsub("%", "", temp4[,i])
 for (i in grep("\\$", temp4)) temp4[,i]<-gsub("\\$", "", temp4[,i])
@@ -171,8 +169,10 @@ for (i in grep("\\$", temp5)) temp5[,i]<-gsub("\\$", "", temp5[,i])
 for (i in grep(",", temp5)) temp5[,i]<-gsub(",", "", temp5[,i])
 for (i in 2:11) temp5[,i] <- as.numeric(temp5[,i])
 ohair<-temp5
+
+#remove temp files
+rm(temp, temp1, temp2, temp3, temp4, header,i)
+
 ohair
 tiger
 clark
-#remove temp files
-rm(temp, temp1, temp2, temp3, temp4, header,i)
