@@ -176,15 +176,44 @@ ohair<-temp5
 rm(temp, temp1, temp2, temp3, temp4, temp5, header,i)
 
 allPlayers <- rbind(baddeley, bradely, clark, crane, duval, fowler, furyk, kuchar, ohair, tiger, watson)
+colnames(allPlayers) 
+testData <- allPlayers[,-c(1, 2, 8, 9, 10)]
+colnames(testData) <- c("drivingDistance", "drivingAccuracyPercentage", "greensRegulationPercentage", "Putting", "birdieAverage", "Money")
+
+lm1.1 <- lm(Money ~ ., data = testData)
+aicFormula <- step(lm1.1)
+aicFormula
+
+bicglm1.1 <- bic.glm(Money ~ ., data = testData, glm.family="gaussian") 
+print(bicglm1.1)
+
+lm2.1 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage  + greensRegulationPercentage  + Putting + birdieAverage, data = testData)
+lm3.1 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage + Putting, data = testData)
+lm4.1 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage  + greensRegulationPercentage  + Putting, data = testData)
+lm5.1 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage  + Putting + birdieAverage, data = testData)
+summary(lm2.1)
+summary(lm3.1)
+summary(lm4.1)
+summary(lm5.1)
 
 
-test
-lm(allPlayers[,11] ~ allPlayers[,3] + allPlayers[,4] + allPlayers[,5] + allPlayers[,6] + allPlayers[,7] + allPlayers[,8] + allPlayers[,9], data = allPlayers)
-lm(allPlayers[,11] ~ ., data = allPlayers)
+#Test without David Duval
+testNoDuval <- rbind(baddeley, bradely, clark, crane, fowler, furyk, kuchar, ohair, tiger, watson) 
+testNoDuval <- testNoDuval[,-c(1, 2, 8, 9, 10)]
+colnames(testNoDuval) <- c("drivingDistance", "drivingAccuracyPercentage", "greensRegulationPercentage", "Putting", "birdieAverage", "Money")
 
+lm1.2 <- lm(Money ~ ., data = testNoDuval)
+aicFormula <- step(lm1.2)
+aicFormula
 
-bicglm1 <- bic.glm(score ~.,data=movies,glm.family="gaussian") 
-print(bicglm1)
+bicglm1.2 <- bic.glm(Money ~ ., data = testNoDuval, glm.family="gaussian") 
+print(bicglm1.2)
 
-movies <- movies[,-1]
-lm1 <- lm(score ~ .,data=movies) aicFormula <- step(lm1)
+lm2.2 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage  + greensRegulationPercentage  + Putting + birdieAverage, data = testNoDuval)
+lm3.2 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage + Putting, data = testNoDuval)
+lm4.2 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage  + greensRegulationPercentage  + Putting, data = testNoDuval)
+lm5.2 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage  + Putting + birdieAverage, data = testNoDuval)
+summary(lm2.2)
+summary(lm3.2)
+summary(lm4.2)
+summary(lm5.2)
