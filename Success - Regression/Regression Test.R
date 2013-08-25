@@ -1,3 +1,5 @@
+library(BMA)
+
 setwd('/Users/upjohnc/Golf Statistics')
 all<-read.csv('./data/PGA Stats.csv', header=FALSE, stringsAsFactors=F)
 header <- all[c(8,13,18,23,33,38,104, 56, 61), 1]
@@ -179,3 +181,10 @@ allPlayers <- rbind(baddeley, bradely, clark, crane, duval, fowler, furyk, kucha
 test
 lm(allPlayers[,11] ~ allPlayers[,3] + allPlayers[,4] + allPlayers[,5] + allPlayers[,6] + allPlayers[,7] + allPlayers[,8] + allPlayers[,9], data = allPlayers)
 lm(allPlayers[,11] ~ ., data = allPlayers)
+
+
+bicglm1 <- bic.glm(score ~.,data=movies,glm.family="gaussian") 
+print(bicglm1)
+
+movies <- movies[,-1]
+lm1 <- lm(score ~ .,data=movies) aicFormula <- step(lm1)
