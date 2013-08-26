@@ -1,9 +1,0 @@
-PGA Tour Statistics
-========================================================
-  
-```{r eval = TRUE, echo=FALSE}
-library(BMA)
-library(knitr)
-library(markdown)
-
-```

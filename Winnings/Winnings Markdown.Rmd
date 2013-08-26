@@ -1,3 +1,4 @@
+``` {r eval=T, echo=FALSE}
 setwd('~/Golf Statistics')
 all<-read.csv('./data/Winning Stats.csv', header=FALSE, stringsAsFactors=F)
 
@@ -305,4 +306,5 @@ summaryStat[,7] <- as.numeric(summaryStat[,7])
 lapply(summaryStat, class)
 mean(summaryStat[,2:7], na.rm=T)
 mean(summaryStat[,2:7], na.rm=T)
-'r'
+```
+`r round(mean(summaryStat[,2:7], na.rm=T)*100)`
