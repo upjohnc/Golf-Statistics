@@ -178,7 +178,7 @@ hljs.initHighlightingOnLoad();
 </head>
 
 <body>
-<h2>PGA Tour Statistics</h2>
+<h1>PGA Tour Statistics</h1>
 
 <h2>Data Munging</h2>
 
@@ -222,6 +222,8 @@ tiger &lt;- temp4
 ## temp2       6133158
 ## temp3        660238
 </code></pre>
+
+<hr/>
 
 <h2>Set Testing Data</h2>
 
@@ -391,6 +393,8 @@ lm5.1 &lt;- lm(Money ~ drivingDistance + drivingAccuracyPercentage + Putting +
 ## F-statistic: 5.18 on 4 and 21 DF,  p-value: 0.00462
 </code></pre>
 
+<hr/>
+
 <h2>Test Regression Models without Duval&#39;s Rows</h2>
 
 <p>Remove David Duval&#39;s results becuase they are poor and skew the models</p>
@@ -427,6 +431,8 @@ lm5.1 &lt;- lm(Money ~ drivingDistance + drivingAccuracyPercentage + Putting +
 ##                    4231188                      -97641
 </code></pre>
 
+<hr/>
+
 <h3>BIC</h3>
 
 <pre><code>Posterior probabilities(%): 
@@ -437,6 +443,8 @@ Coefficient posterior expected values:
  (Intercept) drivingDistance drivingAccuracyPercentage  greensRegulationPercentage  Putting birdieAverage  
   -42365071           85704                   140407                      167625    3350533        -73739 
 </code></pre>
+
+<hr/>
 
 <h4>Compare Different Inputs</h4>
 

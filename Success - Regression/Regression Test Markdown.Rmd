@@ -1,5 +1,5 @@
 PGA Tour Statistics
----------------------------
+========================
 
 ```{r Library, eval = TRUE, echo=FALSE, message=FALSE, tidy=TRUE, warning=FALSE}
 library(BMA)
@@ -191,6 +191,7 @@ ohair<-temp5
 #remove temp files
 rm(temp, temp1, temp2, temp3, temp4, temp5, header,i)
 ```
+****
 Set Testing Data
 ---------------------------
 ```{r SetTestingData, eval = TRUE, echo=TRUE, message=FALSE, tidy=TRUE}
@@ -236,6 +237,7 @@ summary(lm3.1)
 summary(lm4.1)
 summary(lm5.1)
 ```
+*****
 Test Regression Models without Duval's Rows
 -----------------
 Remove David Duval's results becuase they are poor and skew the models
@@ -252,6 +254,7 @@ lm1.2 <- lm(Money ~ ., data = testNoDuval)
 aicFormula <- step(lm1.2)
 aicFormula
 ```
+****
 ### BIC
 ```{r SecondBIC, eval = TRUE, echo=F, message=TRUE, tidy=TRUE, results='hide', warning=FALSE, error=FALSE}
 bicglm1.2 <- bic.glm(Money ~ ., data = testNoDuval, glm.family="gaussian") 
@@ -266,6 +269,7 @@ Coefficient posterior expected values:
  (Intercept) drivingDistance drivingAccuracyPercentage  greensRegulationPercentage  Putting birdieAverage  
   -42365071           85704                   140407                      167625    3350533        -73739 
 ```
+****
 #### Compare Different Inputs
 Test model differences for different inputs
 ```{r Compare Inputs Again, eval = TRUE, echo=FALSE, message=FALSE, tidy=TRUE}

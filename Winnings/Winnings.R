@@ -296,6 +296,7 @@ ohair11<-ohair[,3]/ohairTot[3]
 ohair11<-ohair11[order(ohair11, decreasing = T)]
 summaryStat[11,] <- c("ohair", sum(ohair13[1:3]), sum(ohair13[1:6]), sum(ohair12[1:3]), sum(ohair12[1:6]), sum(ohair11[1:3]), sum(ohair11[1:6]))
 
+#Make numeric
 summaryStat[,2] <- as.numeric(summaryStat[,2])
 summaryStat[,3] <- as.numeric(summaryStat[,3])
 summaryStat[,4] <- as.numeric(summaryStat[,4])
@@ -304,5 +305,5 @@ summaryStat[,6] <- as.numeric(summaryStat[,6])
 summaryStat[,7] <- as.numeric(summaryStat[,7])
 lapply(summaryStat, class)
 mean(summaryStat[,2:7], na.rm=T)
-mean(summaryStat[,2:7], na.rm=T)
-'r'
+
+cat(summaryStat[1,2], "%")

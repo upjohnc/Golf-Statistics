@@ -1,5 +1,5 @@
 PGA Tour Statistics
----------------------------
+========================
 
 
 
@@ -55,6 +55,7 @@ tiger <- temp4
 
 
 
+****
 Set Testing Data
 ---------------------------
 
@@ -231,6 +232,7 @@ lm5.1 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage + Putting +
 ## F-statistic: 5.18 on 4 and 21 DF,  p-value: 0.00462
 ```
 
+*****
 Test Regression Models without Duval's Rows
 -----------------
 Remove David Duval's results becuase they are poor and skew the models
@@ -272,6 +274,7 @@ aicFormula <- step(lm1.2)
 ##                    4231188                      -97641
 ```
 
+****
 ### BIC
 
 
@@ -284,6 +287,7 @@ Coefficient posterior expected values:
  (Intercept) drivingDistance drivingAccuracyPercentage  greensRegulationPercentage  Putting birdieAverage  
   -42365071           85704                   140407                      167625    3350533        -73739 
 ```
+****
 #### Compare Different Inputs
 Test model differences for different inputs
 
