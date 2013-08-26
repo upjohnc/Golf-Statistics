@@ -31,7 +31,7 @@ for (i in grep("\\$", temp4)) temp4[,i]<-gsub("\\$", "", temp4[,i])
 for (i in grep(",", temp4)) temp4[,i]<-gsub(",", "", temp4[,i])
 for (i in 2:11) temp4[,i] <- as.numeric(temp4[,i])
 tiger<-temp4
-tiger
+tiger[,-1]
 ```
 
 ```{r eval = TRUE, echo=FALSE, message=FALSE}
@@ -189,10 +189,14 @@ ohair<-temp5
 #remove temp files
 rm(temp, temp1, temp2, temp3, temp4, temp5, header,i)
 
+Create dataframe to test regression models
+```{r eval = TRUE, echo=TRUE, message=FALSE, tidy=TRUE}
 allPlayers <- rbind(baddeley, bradely, clark, crane, duval, fowler, furyk, kuchar, ohair, tiger, watson)
 testData <- allPlayers[,-c(1, 2, 8, 9, 10)]
 colnames(testData) <- c("drivingDistance", "drivingAccuracyPercentage", "greensRegulationPercentage", "Putting", "birdieAverage", "Money")
-
+```
+Run AIC and BIC for guidance on best model
+```{r eval = TRUE, echo=TRUE, message=FALSE, tidy=TRUE}
 lm1.1 <- lm(Money ~ ., data = testData)
 aicFormula <- step(lm1.1)
 aicFormula
@@ -208,8 +212,10 @@ summary(lm2.1)
 summary(lm3.1)
 summary(lm4.1)
 summary(lm5.1)
+```
 
-
+After review David Duval's (Duval) record is skewing the results
+```{r eval = TRUE, echo=TRUE, message=FALSE, tidy=TRUE}
 #Test without David Duval
 testNoDuval <- rbind(baddeley, bradely, clark, crane, fowler, furyk, kuchar, ohair, tiger, watson) 
 testNoDuval <- testNoDuval[,-c(1, 2, 8, 9, 10)]
@@ -230,3 +236,4 @@ summary(lm2.2)
 summary(lm3.2)
 summary(lm4.2)
 summary(lm5.2)
+```
