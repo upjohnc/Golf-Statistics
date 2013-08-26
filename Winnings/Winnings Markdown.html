@@ -205,6 +205,7 @@ temp &lt;- rbind(temp1, temp2, temp3)
 temp5 &lt;- as.data.frame(temp, stringsAsFactors = F)
 
 # remove $ , % from data
+<<<<<<< HEAD:Success - Regression/Regression Test copy.html
 for (i in grep(&quot;--&quot;, temp5)) temp5[, i] &lt;- gsub(&quot;--&quot;, &quot;0&quot;, temp5[, i])
 for (i in grep(&quot;\\$&quot;, temp5)) temp5[, i] &lt;- gsub(&quot;\\$&quot;, &quot;&quot;, temp5[, i])
 for (i in grep(&quot;,&quot;, temp5)) temp5[, i] &lt;- gsub(&quot;,&quot;, &quot;&quot;, temp5[, i])

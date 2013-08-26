@@ -33,7 +33,6 @@ for (i in grep("\\$", temp4)) temp4[,i]<-gsub("\\$", "", temp4[,i])
 for (i in grep(",", temp4)) temp4[,i]<-gsub(",", "", temp4[,i])
 for (i in 2:11) temp4[,i] <- as.numeric(temp4[,i])
 tiger<-temp4
-tiger
 ```
 
 ```{r OtherPlayersHidden, eval = TRUE, echo=FALSE, message=FALSE, tidy=TRUE}
