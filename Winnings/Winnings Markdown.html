@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title>PGA Tour Statistics</title>
+<title>PGA Tour Winnings</title>
 
 <style type="text/css">
 body, td {
@@ -178,27 +178,34 @@ hljs.initHighlightingOnLoad();
 </head>
 
 <body>
-<h1>PGA Tour Statistics</h1>
+<h1>PGA Tour Winnings</h1>
 
-<p>Data Munging</p>
+<h2>Data Munging</h2>
 
-<pre><code class="r">setwd(&quot;/Users/user/Golf Statistics&quot;)
-all &lt;- read.csv(&quot;./data/PGA Stats.csv&quot;, header = FALSE, stringsAsFactors = F)
-header &lt;- all[c(8, 13, 18, 23, 33, 38, 104, 56, 61), 1]
-header &lt;- append(c(&quot;Name&quot;, &quot;Year&quot;), header)
+<pre><code class="r">all &lt;- read.csv(&quot;./data/Winning Stats.csv&quot;, header = FALSE, stringsAsFactors = F)
+
+summaryStat &lt;- data.frame(Name = character(), Three2013 = as.numeric(character()), 
+    Six2013 = as.numeric(character()), Three2012 = as.numeric(character()), 
+    Six2012 = as.numeric(character()), Three2011 = as.numeric(character()), 
+    Six2011 = as.numeric(character()), stringsAsFactors = FALSE)
 </code></pre>
 
-<p>Example of creating the player data from the csv</p>
+<hr/>
+
+<h4>Example of creating the player data from the csv</h4>
 
 <pre><code class="r">#### Tiger####
-temp1 &lt;- all[c(1, 2, 9, 14, 19, 24, 34, 39, 105, 57, 62), 1]
-temp2 &lt;- all[c(1, 2, 9, 14, 19, 24, 34, 39, 110, 57, 67), 2]
-temp3 &lt;- all[c(1, 2, 9, 14, 19, 24, 34, 39, 106, 53, 63), 3]
+temp1 &lt;- all[c(27, 38, 49, 60, 71, 82, 93, 104, 115, 126, 137, 148, 159, 170, 
+    181, 192, 203, 214, 225, 236, 247, 258, 269, 280, 291, 302, 313, 324), 1]
+temp2 &lt;- all[c(27, 38, 49, 60, 71, 82, 93, 104, 115, 126, 137, 148, 159, 170, 
+    181, 192, 203, 214, 225, 236, 247, 258, 269, 280, 291, 302, 313, 324), 2]
+temp3 &lt;- all[c(27, 38, 49, 60, 71, 82, 93, 104, 115, 126, 137, 148, 159, 170, 
+    181, 192, 203, 214, 225, 236, 247, 258, 269, 280, 291, 302, 313, 324), 3]
 temp &lt;- rbind(temp1, temp2, temp3)
-temp4 &lt;- rbind(header, temp)
-temp4 &lt;- as.data.frame(temp, stringsAsFactors = F)
-colnames(temp4) &lt;- header
+temp5 &lt;- as.data.frame(temp, stringsAsFactors = F)
+
 # remove $ , % from data
+<<<<<<< HEAD:Success - Regression/Regression Test copy.html
 for (i in grep(&quot;%&quot;, temp4)) temp4[, i] &lt;- gsub(&quot;%&quot;, &quot;&quot;, temp4[, i])
 for (i in grep(&quot;\\$&quot;, temp4)) temp4[, i] &lt;- gsub(&quot;\\$&quot;, &quot;&quot;, temp4[, i])
 for (i in grep(&quot;,&quot;, temp4)) temp4[, i] &lt;- gsub(&quot;,&quot;, &quot;&quot;, temp4[, i])
@@ -603,6 +610,39 @@ summary(lm2.2)
 ## Residual standard error: 1250000 on 26 degrees of freedom
 ## Multiple R-squared:  0.571,  Adjusted R-squared:  0.505 
 ## F-statistic: 8.64 on 4 and 26 DF,  p-value: 0.000142
+=======
+for (i in grep(&quot;--&quot;, temp5)) temp5[, i] &lt;- gsub(&quot;--&quot;, &quot;0&quot;, temp5[, i])
+for (i in grep(&quot;\\$&quot;, temp5)) temp5[, i] &lt;- gsub(&quot;\\$&quot;, &quot;&quot;, temp5[, i])
+for (i in grep(&quot;,&quot;, temp5)) temp5[, i] &lt;- gsub(&quot;,&quot;, &quot;&quot;, temp5[, i])
+for (i in grep(&quot;\\$&quot;, temp5)) temp5[, i] &lt;- gsub(&quot;\\$&quot;, &quot;&quot;, temp5[, i])
+for (i in 1:ncol(temp5)) temp5[, i] &lt;- as.numeric(temp5[, i])
+tiger &lt;- t(temp5)
+colnames(tiger) &lt;- c(&quot;2013&quot;, &quot;2012&quot;, &quot;2011&quot;)
+
+tigerTot &lt;- apply(tiger, 2, function(x) sum(x, na.rm = T))
+tiger13 &lt;- tiger[, 1]/tigerTot[1]
+tiger13 &lt;- tiger13[order(tiger13, decreasing = T)]
+tiger12 &lt;- tiger[, 2]/tigerTot[2]
+tiger12 &lt;- tiger12[order(tiger12, decreasing = T)]
+tiger11 &lt;- tiger[, 3]/tigerTot[3]
+tiger11 &lt;- tiger11[order(tiger11, decreasing = T)]
+summaryStat[1, ] &lt;- c(&quot;Tiger&quot;, sum(tiger13[1:3]), sum(tiger13[1:6]), sum(tiger12[1:3]), 
+    sum(tiger12[1:6]), sum(tiger11[1:3]), sum(tiger11[1:6]))
+</code></pre>
+
+<hr/>
+
+<h2>Summary of Results</h2>
+
+<p>Average Percentage of Total Winnings from <strong>3</strong> Tournaments in a Year</p>
+
+<pre><code>65.5%
+</code></pre>
+
+<p>Average Percentage of Total Winnings from <strong>6</strong> Tournaments in a Year</p>
+
+<pre><code>83.2%
+>>>>>>> dbe4b8f0a56e9f0725a44c128f7bb8c415551bb1:Winnings/Winnings Markdown.html
 </code></pre>
 
 </body>

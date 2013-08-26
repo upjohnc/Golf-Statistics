@@ -1,24 +1,25 @@
 library(BMA)
 
-#setwd('/Users/upjohnc/Golf Statistics')
+setwd('~/Golf Statistics')
 all<-read.csv('./data/PGA Stats.csv', header=FALSE, stringsAsFactors=F)
 header <- all[c(8,13,18,23,33,38,104, 56, 61), 1]
 header<-append(c("Name", "Year"), header)
+
 
 ####Tiger####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 1]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 2]
 temp3<- all[c(1,2,9,14,19,24,34,39,106, 53, 63), 3]
 temp <- rbind(temp1, temp2, temp3)
-temp4<-rbind(header, temp)
 temp4<-as.data.frame(temp, stringsAsFactors=F)
 colnames(temp4) <- header
 #remove $ , % from data
 for (i in grep("%", temp4)) temp4[,i]<-gsub("%", "", temp4[,i])
 for (i in grep("\\$", temp4)) temp4[,i]<-gsub("\\$", "", temp4[,i])
 for (i in grep(",", temp4)) temp4[,i]<-gsub(",", "", temp4[,i])
-for (i in 2:11) temp4[,i] <- as.numeric(temp4[,i])
+for (i in 2:ncol(temp4)) temp4[,i] <- as.numeric(temp4[,i])
 tiger<-temp4
+
 
 ####Crane####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 4]
