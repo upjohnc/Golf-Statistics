@@ -1,10 +1,22 @@
-library(BMA)
+PGA Tour Statistics
+========================================================
 
-#setwd('/Users/upjohnc/Golf Statistics')
+```{r eval = TRUE, echo=FALSE, message=FALSE}
+library(BMA)
+library(knitr)
+library(markdown)
+
+```
+Data Munging
+```{r eval = TRUE, echo=TRUE, message=TRUE, tidy=TRUE}
+setwd('/Users/user/Golf Statistics')
 all<-read.csv('./data/PGA Stats.csv', header=FALSE, stringsAsFactors=F)
 header <- all[c(8,13,18,23,33,38,104, 56, 61), 1]
 header<-append(c("Name", "Year"), header)
+```
 
+Example of creating the player data from the csv
+```{r eval = TRUE, echo=TRUE, message=FALSE, tidy=TRUE}
 ####Tiger####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 1]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 2]
@@ -19,7 +31,10 @@ for (i in grep("\\$", temp4)) temp4[,i]<-gsub("\\$", "", temp4[,i])
 for (i in grep(",", temp4)) temp4[,i]<-gsub(",", "", temp4[,i])
 for (i in 2:11) temp4[,i] <- as.numeric(temp4[,i])
 tiger<-temp4
+tiger
+```
 
+```{r eval = TRUE, echo=FALSE, message=FALSE}
 ####Crane####
 temp1<- all[c(1,2,9,14,19,24,34,39,105, 57, 62), 4]
 temp2<- all[c(1,2,9,14,19,24,34,39,110, 57, 67), 5]
@@ -170,7 +185,7 @@ for (i in grep("\\$", temp5)) temp5[,i]<-gsub("\\$", "", temp5[,i])
 for (i in grep(",", temp5)) temp5[,i]<-gsub(",", "", temp5[,i])
 for (i in 2:11) temp5[,i] <- as.numeric(temp5[,i])
 ohair<-temp5
-
+```
 #remove temp files
 rm(temp, temp1, temp2, temp3, temp4, temp5, header,i)
 
