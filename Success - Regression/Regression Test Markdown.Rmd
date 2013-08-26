@@ -11,7 +11,7 @@ Data Munging
 ---------------------------
 
 ```{r DataMunging, eval = TRUE, echo=-1, message=TRUE, tidy=TRUE, warning=FALSE}
-setwd('/Users/upjohnc/Golf Statistics')
+setwd('~/Golf Statistics')
 all<-read.csv('./data/PGA Stats.csv', header=FALSE, stringsAsFactors=F)
 header <- all[c(8,13,18,23,33,38,104, 56, 61), 1]
 header<-append(c("Name", "Year"), header)

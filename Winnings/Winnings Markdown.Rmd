@@ -3,7 +3,7 @@ PGA Tour Winnings
 
 Data Munging
 ---------------------------
-```{r DataMunging, eval = TRUE, echo=-1, message=TRUE, tidy=TRUE, warning=FALSE}
+```{r DataMunging, eval = TRUE, echo=-1, message=TRUE, tidy=TRUE)#, warning=FALSE}
 setwd('~/Golf Statistics')
 all<-read.csv('./data/Winning Stats.csv', header=FALSE, stringsAsFactors=F)
 
@@ -303,6 +303,8 @@ summaryStat[,4] <- as.numeric(summaryStat[,4])
 summaryStat[,5] <- as.numeric(summaryStat[,5])
 summaryStat[,6] <- as.numeric(summaryStat[,6])
 summaryStat[,7] <- as.numeric(summaryStat[,7])
+summaryThree <- c(summaryStat[,2], summaryStat[,4], summaryStat[,6])
+summarySix <- c(summaryStat[,3], summaryStat[,5], summaryStat[,7])
 ```
 ****
 Summary of Results
@@ -310,9 +312,9 @@ Summary of Results
 
 Average Percentage of Total Winnings from __3__ Tournaments in a Year
 ```
-`r round(mean(mean(summaryStat[,c(2,4,6)], na.rm=T))*100, 1)`%
+`r round(mean(summaryThree, na.rm=T)*100,1)`%
 ```
 Average Percentage of Total Winnings from **6** Tournaments in a Year
 ```
-`r round(mean(mean(summaryStat[,c(3,5,7)], na.rm=T))*100, 1)`%
+`r round(mean(summarySix, na.rm=T)*100,1)`%
 ```

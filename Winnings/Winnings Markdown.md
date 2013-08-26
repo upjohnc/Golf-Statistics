@@ -60,5 +60,5 @@ Average Percentage of Total Winnings from __3__ Tournaments in a Year
 ```
 Average Percentage of Total Winnings from **6** Tournaments in a Year
 ```
-83.2%
+83.1%
 ```
