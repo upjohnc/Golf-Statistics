@@ -66,6 +66,7 @@ colnames(testData) <- c("drivingDistance", "drivingAccuracyPercentage", "greensR
     "Putting", "birdieAverage", "Money")
 ```
 
+******
 Test Regression Models
 ---------------------------
 ### AIC
@@ -99,6 +100,7 @@ aicFormula <- step(lm1.1)
 ## - drivingDistance            1  1.72e+13 7.00e+13 752
 ```
 
+******
 ### BIC
 
 
@@ -391,6 +393,3 @@ Test model differences for different inputs
 ## F-statistic: 6.14 on 4 and 18 DF,  p-value: 0.00269
 ```
 
-
-Summary of Findings
----------------------

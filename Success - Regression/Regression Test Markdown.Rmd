@@ -198,6 +198,7 @@ allPlayers <- rbind(baddeley, bradely, clark, crane, duval, fowler, furyk, kucha
 testData <- allPlayers[,-c(1, 2, 8, 9, 10)]
 colnames(testData) <- c("drivingDistance", "drivingAccuracyPercentage", "greensRegulationPercentage", "Putting", "birdieAverage", "Money")
 ```
+******
 Test Regression Models
 ---------------------------
 ### AIC
@@ -206,6 +207,7 @@ lm1.1 <- lm(Money ~ ., data = testData)
 aicFormula <- step(lm1.1)
 #aicFormula
 ```
+******
 ### BIC
 ```{r FirstBIC, eval = TRUE, echo=F, message=TRUE, tidy=TRUE, results='hide', warning=FALSE, error=FALSE}
 bicglm1.1 <- bic.glm(Money ~ ., data = testData, glm.family="gaussian") 
