@@ -231,11 +231,10 @@ lm3.1 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage + Putting, data 
 lm4.1 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage  + greensRegulationPercentage  + Putting, data = testData)
 lm5.1 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage  + Putting + birdieAverage, data = testData)
 ```
+Example of output from first model
 ```{r ModelOutputs, eval = TRUE, echo=FALSE, message=FALSE, tidy=TRUE, results='markup'}
 summary(lm2.1)
-summary(lm3.1)
-summary(lm4.1)
-summary(lm5.1)
+
 ```
 *****
 Test Regression Models without Duval's Rows
@@ -272,15 +271,14 @@ Coefficient posterior expected values:
 ****
 #### Compare Different Inputs
 Test model differences for different inputs
-```{r Compare Inputs Again, eval = TRUE, echo=FALSE, message=FALSE, tidy=TRUE}
+```{r Compare Inputs Again, eval = TRUE, echo=TRUE, message=FALSE, tidy=TRUE}
 lm2.2 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage  + greensRegulationPercentage  + Putting + birdieAverage, data = testNoDuval)
 lm3.2 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage + Putting, data = testNoDuval)
 lm4.2 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage  + greensRegulationPercentage  + Putting, data = testNoDuval)
 lm5.2 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage  + Putting + birdieAverage, data = testNoDuval)
 ```
+****
+Example of output from first model
 ```{r ResultsfromModels, eval = TRUE, echo=FALSE, message=FALSE, tidy=TRUE}
 summary(lm2.2)
-summary(lm3.2)
-summary(lm4.2)
-summary(lm5.2)
 ```
