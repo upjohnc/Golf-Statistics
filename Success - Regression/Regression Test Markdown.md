@@ -127,6 +127,7 @@ lm5.1 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage + Putting +
     birdieAverage, data = testData)
 ```
 
+****
 Example of output from first model
 
 ```

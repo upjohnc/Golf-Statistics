@@ -231,6 +231,7 @@ lm3.1 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage + Putting, data 
 lm4.1 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage  + greensRegulationPercentage  + Putting, data = testData)
 lm5.1 <- lm(Money ~ drivingDistance + drivingAccuracyPercentage  + Putting + birdieAverage, data = testData)
 ```
+****
 Example of output from first model
 ```{r ModelOutputs, eval = TRUE, echo=FALSE, message=FALSE, tidy=TRUE, results='markup'}
 summary(lm2.1)
